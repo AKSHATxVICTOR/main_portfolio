@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="assets/favicon/favicon.svg" type="image/svg+xml" />
+  <title>Contact | Akshat Kumar Sinha</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/contact.css">
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">AKS</a>
+    <div class="nav-links">
+      <a href="index.html#about">About</a>
+      <a href="index.html#projects">Work</a>
+      <a href="index.html#skills">Skills</a>
+    </div>
+  </nav>
+
+  <div class="contact-page">
+    <div class="contact-left">
+      <div class="section-label">/ Contact</div>
+      <h1>Let's build<br><em>something.</em></h1>
+      <p>Have a project in mind or want to collaborate? Send a message and I'll get back to you.</p>
+
+      <div class="contact-info">
+        <a href="mailto:akshatkrsinha@gmail.com" class="contact-info-item">
+          <span class="contact-info-label">Email</span>
+          <span class="contact-info-value">akshatkrsinha@gmail.com</span>
+        </a>
+        <a href="https://www.linkedin.com/in/akshat-kumar-sinha-082981286/" target="_blank" class="contact-info-item">
+          <span class="contact-info-label">LinkedIn</span>
+          <span class="contact-info-value">akshat-kumar-sinha</span>
+        </a>
+        <a href="https://github.com/AKSHATxVICTOR" target="_blank" class="contact-info-item">
+          <span class="contact-info-label">GitHub</span>
+          <span class="contact-info-value">AKSHATxVICTOR</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="contact-right">
+      <div class="skeu-form-card">
+        <div class="form-card-header">
+          <span class="form-card-title">Send a message</span>
+        </div>
+        <form id="contactForm" class="contact-form-fields">
+          <div class="field-group">
+            <label>Your Name</label>
+            <input type="text" name="from_name" placeholder="Akshat Kr Sinha" required />
+          </div>
+          <div class="field-group">
+            <label>Email</label>
+            <input type="email" name="from_email" placeholder="akshatkrsinha@gmail.com" required />
+          </div>
+          <div class="field-group">
+            <label>Subject</label>
+            <input type="text" name="subject" placeholder="Collaboration / Opportunity" required />
+          </div>
+          <div class="field-group">
+            <label>Message</label>
+            <textarea name="message" placeholder="Hey Akshat, I'd love to..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary form-submit">Send Message</button>
+          <span id="status" class="form-status"></span>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/contact.js"></script>
+</body>
+</html>
