@@ -12,7 +12,7 @@ export const profile = {
   availability: "Open to internships, product work, and developer roles",
   email: "akshatkrsinha@gmail.com",
   phone: "+91 98715 58731",
-  resumeHref: "/assets/resume/RESUME%20AKSHAT%20KUMAR%20SINHA.pdf",
+  resumeHref: "/public/assets/resume/RESUME%20AKSHAT%20KUMAR%20SINHA.pdf",
   intro:
     "Computer Science student specializing in Data Science at SRMIST, currently building frontend modules for enterprise cyber-risk workflows while shipping practical projects across data automation, Android, web, and self-hosted infrastructure.",
   socials: [
