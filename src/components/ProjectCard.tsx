@@ -2,67 +2,45 @@ import { motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import type { Project } from "../data/projects";
 import { motionTokens } from "../lib/motion";
+import { GlassPanel } from "./GlassPanel";
 
 type ProjectCardProps = {
   project: Project;
 };
 
-const accentClass: Record<Project["accent"], string> = {
-  steel: "from-steel/24",
-  brass: "from-brass/24",
-  ember: "from-ember/24",
-};
-
 export function ProjectCard({ project }: ProjectCardProps) {
   const reduceMotion = useReducedMotion();
+  const linkProps = project.href
+    ? { as: "a" as const, href: project.href, target: "_blank", rel: "noreferrer" }
+    : { as: "article" as const };
 
   return (
-    <motion.a
-      layoutId={`project-${project.id}`}
-      href={project.href}
-      target="_blank"
-      rel="noreferrer"
-      whileHover={reduceMotion ? undefined : { y: -8 }}
-      whileTap={reduceMotion ? undefined : { scale: 0.985 }}
-      transition={motionTokens.spring}
-      className="group relative min-h-[26rem] overflow-hidden rounded-[8px] border border-hairline bg-ink-panel p-5 shadow-line outline-none focus-visible:ring-2 focus-visible:ring-steel"
+    <GlassPanel
+      {...linkProps}
+      interactive={Boolean(project.href)}
+      className="group block min-h-[29rem] p-6 outline-none focus-visible:ring-2 focus-visible:ring-accent-primary"
     >
-      <div className={`absolute inset-x-0 top-0 h-36 bg-gradient-to-b ${accentClass[project.accent]} to-transparent`} />
-      <div className="project-thumb mb-8 h-36 overflow-hidden rounded-[6px] border border-hairline bg-ink-base">
-        <div className="grid h-full grid-cols-5 gap-px opacity-80">
-          {Array.from({ length: 20 }).map((_, index) => (
-            <span key={index} className="bg-white/[0.03]" />
-          ))}
-        </div>
+      <div className="mb-8 h-40 overflow-hidden rounded-[24px] border border-white/[0.12] bg-white/[0.055]">
+        <motion.div
+          animate={reduceMotion ? undefined : { backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
+          transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+          className="h-full bg-[linear-gradient(120deg,rgba(84,214,255,.18),rgba(167,139,250,.2),rgba(255,255,255,.08))] bg-[length:220%_220%]"
+        />
       </div>
-      <div className="relative">
-        <div className="mb-5 flex items-center justify-between gap-4">
-          <span className="font-mono text-[0.68rem] uppercase tracking-[0.2em] text-steel">
-            {project.code}
-          </span>
-          <ArrowUpRight
-            className="size-5 text-bone-soft transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-steel"
-            aria-hidden="true"
-          />
-        </div>
-        <p className="mb-3 font-mono text-xs uppercase tracking-[0.18em] text-bone-muted">
-          {project.category}
-        </p>
-        <h3 className="font-display text-4xl font-semibold leading-none text-bone">
-          {project.title}
-        </h3>
-        <p className="mt-5 text-sm leading-7 text-bone-soft">{project.summary}</p>
-        <p className="mt-5 translate-y-3 text-sm leading-7 text-steel opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100">
-          {project.result}
-        </p>
-        <div className="mt-6 flex flex-wrap gap-2">
-          {project.tech.map((tech) => (
-            <span key={tech} className="mono-chip">
-              {tech}
-            </span>
-          ))}
-        </div>
+      <div className="flex items-center justify-between gap-5">
+        <p className="text-sm font-medium text-accent-primary">{project.eyebrow}</p>
+        {project.href ? (
+          <ArrowUpRight className="size-5 text-text-secondary transition group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-accent-primary" aria-hidden="true" />
+        ) : null}
       </div>
-    </motion.a>
+      <h3 className="mt-4 text-3xl font-semibold leading-tight text-text-primary">{project.title}</h3>
+      <p className="mt-5 leading-7 text-text-secondary">{project.description}</p>
+      <p className="mt-5 leading-7 text-text-muted transition-colors group-hover:text-text-secondary">{project.outcome}</p>
+      <div className="mt-7 flex flex-wrap gap-2">
+        {project.tech.map((tech) => (
+          <span key={tech} className="tech-chip">{tech}</span>
+        ))}
+      </div>
+    </GlassPanel>
   );
 }

@@ -1,39 +1,43 @@
-# AKS Portfolio Design System
+﻿# AKS Portfolio Design System
 
-Creative direction: restrained cinematic game UI. Ghost-inspired ink, negative space, and slow reveals lead the language; field-note texture and compact uppercase navigation support it. No literal game assets, logos, or copied chrome are used.
+Creative direction: Professional Liquid Glass. The site uses translucent, softly blurred surfaces over an ambient gradient field. The tone is polished and credible for hiring managers and senior engineers, with no game-HUD, dossier, mission, field-note, or chapter language.
 
-## Color
+## Color Tokens
 
-- `ink.base` `#080b0d`: page base.
-- `ink.raised` `#11181c`: elevated bands and nav.
-- `ink.panel` `#172024`: mission cards and stat sheets.
-- `steel` `#7da7b5`: primary accent for active states, progress, and HUD lines.
-- `brass` `#a48552`: restrained secondary rule color.
-- `bone` `#efe8dc`: primary text; `bone.soft` and `bone.muted` for hierarchy.
-- `hairline`: low-contrast borders.
+- `bg.base` `#060912`: near-black cool base.
+- `bg.radial` `#0d1726`: deep blue-tinted glow layer.
+- `glass.fill` `rgba(255,255,255,0.075)`: default surface fill.
+- `glass.strong` `rgba(255,255,255,0.12)`: stronger panel fill.
+- `glass.border` `rgba(255,255,255,0.18)`: default glass hairline.
+- `glass.highlight` `rgba(255,255,255,0.42)`: top-edge/specular highlight.
+- `accent.primary` `#54d6ff`: electric cyan-blue for active states and CTAs.
+- `accent.violet` `#a78bfa`: secondary glow only.
+- `text.primary` `#f7fbff`, `text.secondary` `#c9d7e6`, `text.muted` `#8796a8`.
+
+## Glass Tokens
+
+- Default blur: `18px`.
+- Strong blur: `24px`.
+- Radius: `28px` for panels, `999px` for nav/buttons, `20px` for smaller cards.
+- Shadow: `0 24px 80px rgba(0,0,0,.32), 0 8px 26px rgba(84,214,255,.08), inset 0 1px 0 rgba(255,255,255,.22)`.
+- All elevated surfaces use one reusable glass class or `GlassPanel` component.
 
 ## Typography
 
-- Display: Cormorant Garamond, used for hero and chapter headings.
-- UI/body: Space Grotesk, used for readable interface copy.
-- Mono: JetBrains Mono, used for tags, counters, specs, and labels.
-- Scale: small labels at 11-12px, body 16-18px, section titles clamp from 40-76px, hero display clamp from 64-142px.
+- Display/headlines: Cormorant Garamond.
+- UI/body: Space Grotesk.
+- Mono: JetBrains Mono, limited to tech tags and code-adjacent labels.
+- Scale: label 12px, body 16-18px, section title 44-76px, hero display 72-148px.
 
 ## Layout
 
 - 8pt spacing base.
-- Sections use generous vertical rhythm with `py-24` to `py-32`.
-- Content max width is 1180px with mobile-first padding.
-- Cards use sharp 6-8px radii, hairline borders, clipped corners, and no nested-card stacks.
+- Max content width: 1184px.
+- Generous vertical rhythm, fluid grids, and large rounded glass surfaces.
+- Mobile layout keeps all glass panels readable by increasing opacity and reducing blur cost.
 
 ## Motion
 
-- Section reveal: 0.65s ease-out, staggered children, once per viewport.
-- Hero sequence: nav, badge, headline, body, CTAs, spec sheet within roughly 1.5s.
-- Interaction spring: stiffness 360, damping 28.
-- Reduced motion: components use opacity-only or instant fallbacks through Framer Motion's `useReducedMotion`.
-
-## Texture
-
-- Global grain, vignette, and thin HUD corner rules are applied consistently through CSS pseudo elements.
-- Background motion is slow parallax/ink drift, never a looping distraction behind body copy.
+- Reveal: 0.7s ease-out with staggered children.
+- Interaction: soft spring, stiffness 260, damping 24.
+- Ambient background: slow morphing blob drift; disabled/frozen for reduced motion.

@@ -5,28 +5,26 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: {
-          base: "#080b0d",
-          raised: "#11181c",
-          panel: "#172024",
-          overlay: "rgba(8, 11, 13, 0.76)",
+        bg: {
+          base: "#060912",
+          radial: "#0d1726",
         },
-        steel: {
-          DEFAULT: "#7da7b5",
-          bright: "#a9d4df",
-          dim: "#425f69",
+        glass: {
+          fill: "rgba(255,255,255,0.075)",
+          strong: "rgba(255,255,255,0.12)",
+          border: "rgba(255,255,255,0.18)",
+          highlight: "rgba(255,255,255,0.42)",
         },
-        brass: {
-          DEFAULT: "#a48552",
-          dim: "#5b4b32",
+        accent: {
+          primary: "#54d6ff",
+          violet: "#a78bfa",
+          teal: "#5eead4",
         },
-        bone: {
-          DEFAULT: "#efe8dc",
-          soft: "#cfc6b8",
-          muted: "#898273",
+        text: {
+          primary: "#f7fbff",
+          secondary: "#c9d7e6",
+          muted: "#8796a8",
         },
-        ember: "#c96f45",
-        hairline: "rgba(239, 232, 220, 0.14)",
       },
       fontFamily: {
         display: ["Cormorant Garamond", "serif"],
@@ -34,12 +32,10 @@ const config: Config = {
         mono: ["JetBrains Mono", "monospace"],
       },
       boxShadow: {
-        hud: "0 18px 60px rgba(0, 0, 0, 0.36)",
-        line: "inset 0 0 0 1px rgba(239, 232, 220, 0.12)",
-      },
-      backgroundImage: {
-        grain:
-          "radial-gradient(circle at 20% 10%, rgba(125,167,181,0.14), transparent 28%), radial-gradient(circle at 85% 15%, rgba(164,133,82,0.12), transparent 25%), linear-gradient(135deg, rgba(255,255,255,0.045) 0 1px, transparent 1px 8px)",
+        glass:
+          "0 24px 80px rgba(0,0,0,.32), 0 8px 26px rgba(84,214,255,.08), inset 0 1px 0 rgba(255,255,255,.22)",
+        glassHover:
+          "0 34px 100px rgba(0,0,0,.38), 0 14px 34px rgba(84,214,255,.14), inset 0 1px 0 rgba(255,255,255,.28)",
       },
     },
   },

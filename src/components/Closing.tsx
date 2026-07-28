@@ -1,68 +1,65 @@
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, Phone } from "lucide-react";
+import { Github, Linkedin, Mail } from "lucide-react";
 import { profile } from "../data/profile";
-import { itemReveal, sectionReveal } from "../lib/motion";
-import { MagneticButton } from "./MagneticButton";
-import { SectionHeading } from "./SectionHeading";
+import { revealGroup, revealItem } from "../lib/motion";
+import { GlassButton } from "./GlassButton";
+import { GlassPanel } from "./GlassPanel";
+
+const contactLinks = [
+  { label: "Email", value: profile.email, href: `mailto:${profile.email}`, icon: Mail },
+  { label: "GitHub", value: "AKSHATxVICTOR", href: "https://github.com/AKSHATxVICTOR", icon: Github, external: true },
+  { label: "LinkedIn", value: "akshat-kumar-sinha", href: "https://www.linkedin.com/in/akshat-kumar-sinha-082981286/", icon: Linkedin, external: true },
+];
 
 export function Closing() {
   return (
     <motion.section
       id="contact"
-      variants={sectionReveal}
+      variants={revealGroup}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.22 }}
-      className="section-shell bg-ink-raised/45"
+      viewport={{ once: true, amount: 0.2 }}
+      className="section-space pb-20"
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <SectionHeading
-          eyebrow="04 - Contact"
-          title="Ready for the next build."
-          copy="Open to internships, collaborations, and product work where data, mobile, and web systems need careful execution."
-        />
-        <motion.div variants={itemReveal} className="grid gap-8 lg:grid-cols-[1fr_0.85fr]">
-          <div>
-            <p className="max-w-2xl font-display text-[clamp(2.4rem,6vw,5.2rem)] font-semibold leading-[0.9] text-bone">
-              Build the system. Read the signal. Ship with intent.
-            </p>
-            <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-              <MagneticButton href={`mailto:${profile.email}`}>Contact Me</MagneticButton>
-              <MagneticButton href={profile.resumeHref} variant="ghost" download>
-                Download Resume
-              </MagneticButton>
+        <motion.div variants={revealItem}>
+          <GlassPanel className="overflow-hidden p-7 sm:p-10 lg:p-12">
+            <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
+              <div>
+                <p className="mb-5 text-sm font-medium uppercase tracking-[0.24em] text-accent-primary/90">Resume & contact</p>
+                <h2 className="font-display text-[clamp(3rem,8vw,6rem)] font-semibold leading-[0.9] text-text-primary">
+                  Let’s build something useful.
+                </h2>
+                <p className="mt-6 max-w-2xl text-lg leading-8 text-text-secondary">
+                  Reach out for internships, collaborations, or product work that needs data-aware engineering and clean execution.
+                </p>
+                <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+                  <GlassButton href={profile.resumeHref} download>Download resume</GlassButton>
+                  <GlassButton href={`mailto:${profile.email}`} variant="secondary">Email Akshat</GlassButton>
+                </div>
+              </div>
+              <div className="grid gap-3">
+                {contactLinks.map((link) => {
+                  const Icon = link.icon;
+                  return (
+                    <a
+                      key={link.label}
+                      href={link.href}
+                      target={link.external ? "_blank" : undefined}
+                      rel={link.external ? "noreferrer" : undefined}
+                      className="contact-card"
+                    >
+                      <Icon className="size-5 text-accent-primary" aria-hidden="true" />
+                      <span>
+                        <span className="block text-xs font-medium uppercase tracking-[0.18em] text-text-muted">{link.label}</span>
+                        <strong className="mt-1 block break-all text-text-primary">{link.value}</strong>
+                      </span>
+                    </a>
+                  );
+                })}
+              </div>
             </div>
-          </div>
-          <address className="dossier-panel not-italic">
-            <a href={`mailto:${profile.email}`} className="contact-link">
-              <Mail className="size-5" aria-hidden="true" />
-              <span>
-                <span>Email</span>
-                <strong>{profile.email}</strong>
-              </span>
-            </a>
-            <a href={`tel:${profile.phone.replace(/\s/g, "")}`} className="contact-link">
-              <Phone className="size-5" aria-hidden="true" />
-              <span>
-                <span>Phone</span>
-                <strong>{profile.phone}</strong>
-              </span>
-            </a>
-            <a href="https://github.com/AKSHATxVICTOR" target="_blank" rel="noreferrer" className="contact-link">
-              <Github className="size-5" aria-hidden="true" />
-              <span>
-                <span>GitHub</span>
-                <strong>AKSHATxVICTOR</strong>
-              </span>
-            </a>
-            <a href="https://www.linkedin.com/in/akshat-kumar-sinha-082981286/" target="_blank" rel="noreferrer" className="contact-link">
-              <Linkedin className="size-5" aria-hidden="true" />
-              <span>
-                <span>LinkedIn</span>
-                <strong>akshat-kumar-sinha</strong>
-              </span>
-            </a>
-          </address>
+          </GlassPanel>
         </motion.div>
       </div>
     </motion.section>

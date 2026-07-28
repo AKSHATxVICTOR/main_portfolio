@@ -1,22 +1,26 @@
 import { motion } from "framer-motion";
-import { itemReveal } from "../lib/motion";
+import { revealItem } from "../lib/motion";
 
 type SectionHeadingProps = {
-  eyebrow: string;
+  label: string;
   title: string;
   copy?: string;
+  align?: "left" | "center";
 };
 
-export function SectionHeading({ eyebrow, title, copy }: SectionHeadingProps) {
+export function SectionHeading({ label, title, copy, align = "left" }: SectionHeadingProps) {
   return (
-    <motion.div variants={itemReveal} className="mb-12 max-w-3xl">
-      <p className="mb-4 font-mono text-xs uppercase tracking-[0.28em] text-steel">
-        {eyebrow}
+    <motion.div
+      variants={revealItem}
+      className={`mb-12 ${align === "center" ? "mx-auto max-w-3xl text-center" : "max-w-3xl"}`}
+    >
+      <p className="mb-4 text-sm font-medium tracking-[0.24em] text-accent-primary/90 uppercase">
+        {label}
       </p>
-      <h2 className="font-display text-[clamp(2.5rem,7vw,4.75rem)] font-semibold leading-[0.9] text-bone">
+      <h2 className="font-display text-[clamp(2.75rem,7vw,4.9rem)] font-semibold leading-[0.92] tracking-normal text-text-primary">
         {title}
       </h2>
-      {copy ? <p className="mt-6 max-w-2xl text-lg leading-8 text-bone-soft">{copy}</p> : null}
+      {copy ? <p className="mt-6 text-lg leading-8 text-text-secondary">{copy}</p> : null}
     </motion.div>
   );
 }

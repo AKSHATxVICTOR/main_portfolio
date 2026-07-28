@@ -1,44 +1,38 @@
-export type SkillMetric = {
-  name: string;
-  level: number;
-  note: string;
-};
-
 export type SkillGroup = {
   title: string;
-  callsign: string;
-  skills: SkillMetric[];
+  summary: string;
+  skills: string[];
 };
 
 export const skillGroups: SkillGroup[] = [
   {
     title: "Languages",
-    callsign: "CORE",
-    skills: [
-      { name: "Python", level: 88, note: "Automation, data pipelines" },
-      { name: "Kotlin", level: 76, note: "Android development" },
-      { name: "JavaScript", level: 78, note: "Web utilities, UI logic" },
-      { name: "C / C++", level: 68, note: "Foundational systems work" },
-    ],
+    summary: "Core programming languages used across data, web, and mobile development.",
+    skills: ["C", "C++", "Python", "JavaScript", "Kotlin"],
   },
   {
-    title: "Data & Analytics",
-    callsign: "SIGNAL",
-    skills: [
-      { name: "Pandas", level: 84, note: "Cleaning, transforms, reporting" },
-      { name: "Time-Series Analysis", level: 72, note: "Market movement studies" },
-      { name: "API Extraction", level: 82, note: "Resilient data collection" },
-      { name: "SQL", level: 70, note: "Structured querying" },
-    ],
+    title: "Frontend & Product UI",
+    summary: "Responsive interfaces, reusable components, and production-facing web modules.",
+    skills: ["React.js", "TypeScript", "HTML", "CSS", "Tailwind CSS", "Responsive Web Design"],
   },
   {
-    title: "Build Systems",
-    callsign: "FIELD",
-    skills: [
-      { name: "Android Studio", level: 75, note: "Mobile workflows" },
-      { name: "Git", level: 82, note: "Versioned delivery" },
-      { name: "Node.js", level: 70, note: "Portal backends" },
-      { name: "Clean Code", level: 86, note: "Readable, maintainable systems" },
-    ],
+    title: "Data & APIs",
+    summary: "Data analysis, API integration, financial time-series workflows, and reporting utilities.",
+    skills: ["Pandas", "Data Analysis", "API Integration", "Financial Time-Series Analysis", "Excel Reporting"],
+  },
+  {
+    title: "Tools & Platforms",
+    summary: "Development tools and environments used for coding, collaboration, and mobile work.",
+    skills: ["Git", "GitHub", "VS Code", "Android Studio", "IntelliJ IDEA"],
+  },
+  {
+    title: "Systems",
+    summary: "Hands-on infrastructure experience from self-hosting and remote-access setup.",
+    skills: ["Ubuntu Server", "CasaOS", "Tailscale", "Linux Administration", "Self-Hosting"],
+  },
+  {
+    title: "Professional Skills",
+    summary: "Collaboration and problem-solving strengths highlighted in the resume.",
+    skills: ["Problem Solving", "Team Collaboration", "Communication", "Analytical Thinking"],
   },
 ];

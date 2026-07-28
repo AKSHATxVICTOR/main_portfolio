@@ -1,24 +1,25 @@
-import type { Variants } from "framer-motion";
+﻿import type { Transition, Variants } from "framer-motion";
 
-export const easeOut = [0.16, 1, 0.3, 1] as const;
+export const smoothEase = [0.22, 1, 0.36, 1] as const;
 
 export const motionTokens = {
-  reveal: { duration: 0.65, ease: easeOut },
-  quick: { duration: 0.22, ease: easeOut },
-  spring: { type: "spring", stiffness: 360, damping: 28 },
+  reveal: { duration: 0.7, ease: smoothEase },
+  quick: { duration: 0.24, ease: smoothEase },
+  spring: { type: "spring", stiffness: 260, damping: 24, mass: 0.8 } satisfies Transition,
 } as const;
 
-export const sectionReveal: Variants = {
-  hidden: { opacity: 0, y: 34 },
+export const revealGroup: Variants = {
+  hidden: {},
   visible: {
-    opacity: 1,
-    y: 0,
-    transition: { ...motionTokens.reveal, staggerChildren: 0.09 },
+    transition: {
+      staggerChildren: 0.09,
+      delayChildren: 0.04,
+    },
   },
 };
 
-export const itemReveal: Variants = {
-  hidden: { opacity: 0, y: 24, filter: "blur(8px)" },
+export const revealItem: Variants = {
+  hidden: { opacity: 0, y: 24, filter: "blur(10px)" },
   visible: {
     opacity: 1,
     y: 0,

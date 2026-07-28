@@ -1,53 +1,55 @@
 export type Project = {
   id: string;
-  code: string;
   title: string;
-  category: string;
-  href: string;
-  summary: string;
-  result: string;
+  eyebrow: string;
+  href?: string;
+  description: string;
+  outcome: string;
   tech: string[];
-  accent: "steel" | "brass" | "ember";
 };
 
 export const projects: Project[] = [
   {
-    id: "banking-market-intel",
-    code: "MISSION 01",
-    title: "Banking Market Intelligence",
-    category: "Python / Finance",
+    id: "banking-market-intelligence",
+    title: "Banking Market Intelligence Automation",
+    eyebrow: "Data automation",
     href: "https://github.com/AKSHATxVICTOR/Banking-market-automation",
-    summary:
-      "Financial API automation computing banking-stock returns with Excel-ready analytical reports.",
-    result:
-      "Handled timezone-aware timestamps, API inconsistencies, and multi-index structures for repeatable market research output.",
-    tech: ["Python", "Pandas", "APIs", "Excel"],
-    accent: "steel",
+    description:
+      "A Python automation pipeline that collects and processes live banking market data through financial APIs.",
+    outcome:
+      "Generated Excel-ready analytical reports, improved data quality through preprocessing and normalization, and handled timezone/API edge cases.",
+    tech: ["Python", "Pandas", "Financial APIs", "Excel"],
   },
   {
-    id: "fi-calculations",
-    code: "MISSION 02",
-    title: "Financial Calculations Utility",
-    category: "Web / Utility",
+    id: "financial-calculations",
+    title: "FI Calculations",
+    eyebrow: "Web utility",
     href: "https://ficalculations.netlify.app/",
-    summary:
-      "A browser utility for return calculations, compounding, and reusable financial metrics.",
-    result:
-      "PapaParse-powered CSV processing keeps calculations client-side, modular, and easy to extend.",
-    tech: ["JavaScript", "PapaParse", "CSS"],
-    accent: "brass",
+    description:
+      "A web application for financial calculations including returns, compounding, and investment metrics.",
+    outcome:
+      "Built reusable calculation modules and CSV-based financial data processing utilities for browser-based workflows.",
+    tech: ["JavaScript", "PapaParse", "HTML", "CSS"],
   },
   {
     id: "srm-access-portal",
-    code: "MISSION 03",
-    title: "SRM Access Portal",
-    category: "Full-Stack / EdTech",
+    title: "Student Access Portal",
+    eyebrow: "Role-based portal",
     href: "https://srm-access-portal.netlify.app/",
-    summary:
-      "Student-mentor connection portal designed to reduce physical paperwork and improve communication.",
-    result:
-      "Role-based flows for students, mentors, and administrators with a MongoDB-backed interface.",
-    tech: ["MongoDB", "Node.js", "HTML/CSS"],
-    accent: "ember",
+    description:
+      "A role-based portal for students, mentors, and administrators to manage campus-related workflows.",
+    outcome:
+      "Implemented secure access control and centralized information management to improve transparency and communication.",
+    tech: ["Node.js", "MongoDB", "HTML", "CSS"],
+  },
+  {
+    id: "self-hosted-home-server",
+    title: "Self-Hosted Home Server Infrastructure",
+    eyebrow: "Systems project",
+    description:
+      "A repurposed laptop running Ubuntu Server and CasaOS for personal cloud and application hosting.",
+    outcome:
+      "Configured Tailscale VPN for secure remote access and gained hands-on experience with Linux administration, networking, and self-hosting.",
+    tech: ["Ubuntu Server", "CasaOS", "Tailscale", "Linux"],
   },
 ];
