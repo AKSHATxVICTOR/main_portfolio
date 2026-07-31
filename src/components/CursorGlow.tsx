@@ -1,9 +1,10 @@
 import { motion, useMotionValue, useReducedMotion, useSpring } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export function CursorGlow() {
   const reduceMotion = useReducedMotion();
   const [visible, setVisible] = useState(false);
+  const visibleRef = useRef(false);
   const mouseX = useMotionValue(-200);
   const mouseY = useMotionValue(-200);
   const x = useSpring(mouseX, { stiffness: 180, damping: 28, mass: 0.6 });
@@ -12,12 +13,21 @@ export function CursorGlow() {
   useEffect(() => {
     if (reduceMotion) return undefined;
 
+    const pointerMedia = window.matchMedia("(pointer: fine)");
+    if (!pointerMedia.matches) return undefined;
+
     const onMove = (event: PointerEvent) => {
-      setVisible(true);
+      if (!visibleRef.current) {
+        visibleRef.current = true;
+        setVisible(true);
+      }
       mouseX.set(event.clientX);
       mouseY.set(event.clientY);
     };
-    const onLeave = () => setVisible(false);
+    const onLeave = () => {
+      visibleRef.current = false;
+      setVisible(false);
+    };
 
     window.addEventListener("pointermove", onMove);
     window.addEventListener("pointerleave", onLeave);

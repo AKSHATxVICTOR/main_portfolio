@@ -35,7 +35,7 @@ export function Closing() {
                 </p>
                 <div className="mt-9 flex flex-col gap-3 sm:flex-row">
                   <GlassButton href={profile.resumeHref} download>Download resume</GlassButton>
-                  <GlassButton href={`mailto:${profile.email}`} variant="secondary">Email Akshat</GlassButton>
+                  <GlassButton href={`mailto:${profile.email}`} variant="secondary">Email me</GlassButton>
                 </div>
               </div>
               <div className="grid gap-3">

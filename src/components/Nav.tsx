@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
 import { profile } from "../data/profile";
 import { motionTokens } from "../lib/motion";
 
@@ -24,6 +24,24 @@ export function Nav() {
     return () => window.removeEventListener("scroll", update);
   }, []);
 
+  useEffect(() => {
+    if (!open) return undefined;
+
+    const closeMenu = () => setOpen(false);
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") closeMenu();
+    };
+
+    window.addEventListener("scroll", closeMenu, { passive: true });
+    window.addEventListener("resize", closeMenu);
+    window.addEventListener("keydown", closeOnEscape);
+    return () => {
+      window.removeEventListener("scroll", closeMenu);
+      window.removeEventListener("resize", closeMenu);
+      window.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [open]);
+
   return (
     <motion.header
       initial={reduceMotion ? false : { opacity: 0, y: -18 }}
@@ -45,9 +63,10 @@ export function Nav() {
               href={link.href}
               target={link.external ? "_blank" : undefined}
               rel={link.external ? "noreferrer" : undefined}
-              className="rounded-full px-4 py-2 text-sm font-medium text-text-secondary outline-none transition hover:bg-white/10 hover:text-text-primary focus-visible:ring-2 focus-visible:ring-accent-primary"
+              className="inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-medium text-text-secondary outline-none transition hover:bg-white/10 hover:text-text-primary focus-visible:ring-2 focus-visible:ring-accent-primary"
             >
-              {link.label}{link.external ? " ↗" : ""}
+              <span>{link.label}</span>
+              {link.external ? <ArrowUpRight aria-hidden="true" className="size-3.5 shrink-0" /> : null}
             </a>
           ))}
         </div>
@@ -77,9 +96,10 @@ export function Nav() {
                 target={link.external ? "_blank" : undefined}
                 rel={link.external ? "noreferrer" : undefined}
                 onClick={() => setOpen(false)}
-                className="block rounded-2xl px-4 py-4 text-lg font-medium text-text-primary outline-none transition hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-accent-primary"
+                className="flex min-h-14 items-center gap-2 rounded-2xl px-4 py-3 text-lg font-medium text-text-primary outline-none transition hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-accent-primary"
               >
-                {link.label}{link.external ? " ↗" : ""}
+                <span>{link.label}</span>
+                {link.external ? <ArrowUpRight aria-hidden="true" className="size-5 shrink-0" /> : null}
               </a>
             ))}
           </motion.div>

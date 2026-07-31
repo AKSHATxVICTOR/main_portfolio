@@ -14,7 +14,7 @@ export const profile = {
   phone: "+91 98715 58731",
   resumeHref: "/public/assets/resume/RESUME%20AKSHAT%20KUMAR%20SINHA.pdf",
   intro:
-    "Computer Science student specializing in Data Science at SRMIST, currently building frontend modules for enterprise cyber-risk workflows while shipping practical projects across data automation, Android, web, and self-hosted infrastructure.",
+    "I am a Computer Science student specializing in Data Science at SRMIST, and I build practical projects across data automation, Android, web, and self-hosted infrastructure.",
   socials: [
     { label: "GitHub", href: "https://github.com/AKSHATxVICTOR", external: true },
     {

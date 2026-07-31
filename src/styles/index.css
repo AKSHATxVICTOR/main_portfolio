@@ -191,10 +191,17 @@ body::after {
   }
 
   .liquid-blob {
-    filter: blur(58px) saturate(1.15);
+    filter: blur(42px) saturate(1.05);
+    will-change: auto;
   }
 
   .cursor-glow {
     display: none;
   }
+
+  body::before,
+  body::after {
+    opacity: 0.28;
+  }
 }
+
